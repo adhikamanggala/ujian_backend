@@ -111,6 +111,10 @@ app.post('/deletemovies/:id', (req, res) => {
     conn.query(sql, (err, result) => {
         res.send(result);
     })
+    var sqlmovcat = `DELETE FROM movcat WHERE idmovie=${req.params.id}`;
+    conn.query(sqlmovcat, (err, results) => {
+        console.log(results)
+    })
 })
 //untuk delete list di tabel movies
 
@@ -118,6 +122,10 @@ app.post('/deletecategories/:id', (req, res) => {
     var sql = `DELETE FROM categories WHERE id= ${req.params.id}`
     conn.query(sql, (err, result) => {
         res.send(result);
+    })
+    var sqlmovcat = `DELETE FROM movcat WHERE idcategory=${req.params.id}`;
+    conn.query(sqlmovcat, (err, results) => {
+        console.log(results)
     })
 })
 //untuk delete list di tabel categories
